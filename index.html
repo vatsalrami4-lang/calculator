@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VMusic — Moonlit Asteroid (Feature Edition)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app" class="moonlit">
+    <header class="header">
+      <div class="brand">VMusic <small>Moonlit Asteroid</small></div>
+
+      <div class="top-right">
+        <input id="search" placeholder="Search songs…" autocomplete="off" />
+        <div id="suggestions" class="suggestions hidden"></div>
+        <button id="themeToggle" title="Toggle theme">🌙</button>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="left">
+        <label class="upload-box" for="upload">
+          <input id="upload" type="file" accept="audio/*" multiple />
+          <div>
+            <strong>Upload songs</strong>
+            <div class="hint">Click to select or drag & drop files</div>
+          </div>
+        </label>
+
+        <div class="player-card">
+          <div class="meta-row">
+            <div class="nowplaying">
+              <div id="nowTitle" class="now-title">No song</div>
+              <div id="nowArtist" class="now-artist muted">—</div>
+            </div>
+            <div class="controls">
+              <button id="prev">⏮</button>
+              <button id="play" class="big">▶</button>
+              <button id="next">⏭</button>
+            </div>
+          </div>
+
+          <canvas id="wave" class="wave"></canvas>
+
+          <div class="seek-row">
+            <input id="seek" type="range" min="0" max="1" step="0.001" value="0" />
+            <div class="time"><span id="cur">0:00</span> / <span id="dur">0:00</span></div>
+          </div>
+
+          <div class="opts-row">
+            <div class="left">
+              <label>Vol <input id="volume" type="range" min="0" max="1" step="0.01" value="1" /></label>
+              <label>Speed
+                <select id="speed">
+                  <option value="0.5">0.5x</option>
+                  <option value="0.75">0.75x</option>
+                  <option value="1" selected>1x</option>
+                  <option value="1.25">1.25x</option>
+                  <option value="1.5">1.5x</option>
+                  <option value="2">2x</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="right">
+              <button id="shuffle" title="Shuffle">🔀</button>
+              <button id="repeat" title="Repeat">🔁 Off</button>
+              <button id="fav" title="Favorite">♡</button>
+              <button id="lyricsBtn" title="Lyrics / Add Lyrics">📝</button>
+            </div>
+          </div>
+
+          <div class="recommend-row">
+            <div class="rec-head">Recommended</div>
+            <ul id="recs" class="recs"></ul>
+          </div>
+        </div>
+      </section>
+
+      <aside class="right">
+        <div class="library-card">
+          <div class="lib-head">Library</div>
+
+          <div class="lib-actions">
+            <button id="showFavs">Favorites</button>
+            <button id="downloadAll">Download All</button>
+            <button id="clearAll">Clear All</button>
+          </div>
+
+          <ul id="playlist" class="playlist"></ul>
+        </div>
+      </aside>
+    </main>
+
+    <div id="lyricsModal" class="modal hidden">
+      <div class="modal-inner">
+        <h3>Lyrics / LRC for: <span id="lyTitle"></span></h3>
+        <textarea id="lyricsArea" placeholder="Paste lyrics or LRC here…" rows="8"></textarea>
+        <div class="modal-actions">
+          <button id="saveLyrics">Save</button>
+          <button id="closeLyrics">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">VMusic — Moonlit Asteroid • All features (frontend)</footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
